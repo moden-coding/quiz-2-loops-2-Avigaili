@@ -87,16 +87,40 @@ public class App {
         Scanner reader = new Scanner(System.in);
         // WRITE YOUR CODE IN THE SPACE BELOW
 
-
+        int count = 1;
+        while (true) {
+            System.out.println("Give a number:");
+            int imput = Integer.valueOf(reader.nextLine());
+            if (imput == secretNumber) {
+                break;
+            }
+            if (imput > 20 || imput < 1) {
+                System.out.println("Please enter vaild number. Please enter a number between 1 and 20.");
+                continue;
+            }
+            if (imput > secretNumber) {
+                System.out.println("Lower");
+                count++;
+            } else {
+                System.out.println("Higher");
+                count++;
+            }
+            if (count == 4) {
+                if (count % 2 == 0) {
+                    System.out.println("Hint: the secret number is even.");
+                } else {
+                    System.out.println("Hint: the secret number is odd.");
+                }
+            }
+        }
+        System.out.println("It took you " + count + " guesses");
 
     }
-
-
 
     // Do not modify!!!
     public static int getSecretNumber() {
         Random random = new Random();
         return random.nextInt(20) + 1; // 1–20 inclusive
     }
-
+    
 }
